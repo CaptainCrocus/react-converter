@@ -1,0 +1,31 @@
+@import "mixins";
+
+.book-pane {
+    .app-pane();
+    &__content {
+        display: flex;
+        flex-direction: column;
+        &-item{
+            font-size: 12px;
+            color: white;
+            border-bottom: 1px solid white;
+            padding: 10px;
+            .cover-image{
+                float: left;
+                margin-right: 10px;
+                display: block;
+                img{
+                    width: 40px;
+                    height: 58px;
+                    background-color: aliceblue;
+                }
+            }
+            .book-info{
+                display: block;
+            }
+            strong{
+                font-weight: 600;
+            }
+        }
+    }
+}

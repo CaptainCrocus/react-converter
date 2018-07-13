@@ -13,6 +13,7 @@ const cachedIcon = require('../../../assets/icons/cached.svg');
 import { ExchangePane } from './containers/ExchangePane';
 import { UserRatesPane } from './containers/UserRatesPane';
 import { RatesFilterPane } from './containers/RatesFilterPane';
+import { BookPane } from './containers/BookPane';
 
 import { CarouselProgress } from '../../components/CarouselProgress';
 import { Account } from './components/Account';
@@ -104,13 +105,16 @@ export class Main extends React.Component<MainProps, React.ComponentState> {
                             </span>
                         </li>
                         <li className="main__actions-item">
-                            <button className="btn btn_round btn_transparent btn_40">
+                        <button 
+                                onClick={ () => this.props.exchangerStore.toggleBookPane() }
+                                className="btn btn_round btn_transparent btn_40"
+                            >
                                 <span className="btn__content">
                                     <SvgIcon className="icon icon_arrow-forward" svg={arrowForwardIcon.default}/>
                                 </span>
                             </button>
                             <span className="main__actions-legend">
-                                Bank
+                                Book
                             </span>
                         </li>
                     </ul>
@@ -118,6 +122,7 @@ export class Main extends React.Component<MainProps, React.ComponentState> {
                 {/* <Operations/>
                 */}
                 <ExchangePane/>
+                <BookPane/>
                 <UserRatesPane/>
                 <RatesFilterPane/>
             </div>

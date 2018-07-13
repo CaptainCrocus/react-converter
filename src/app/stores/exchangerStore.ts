@@ -39,6 +39,8 @@ interface ExchangerState {
     targetRates: any[],
     operations: Operation[],
     isExchangePaneOpened: boolean,
+    isBookPaneOpened: boolean,
+    results: any[],
     isRatesPaneOpened: boolean, // TODO temp
     isRatesFilterPaneOpened: boolean, // TODO temp
     currencyExchangeFrom: string;
@@ -56,6 +58,8 @@ const INITIAL_STATE = localStorage.getItem('operations') || {
     targetRates: [] as any,
     operations: operations.map(o => Object.assign(o, { createdAt: new Date(o.createdAt) })),
     isExchangePaneOpened: false,
+    isBookPaneOpened: false,
+    results: [] as any,
     isRatesPaneOpened: false, // TODO temp
     isRatesFilterPaneOpened: false, // TODO temp
     currencyExchangeFrom: 'USD',
@@ -120,6 +124,18 @@ export class ExchangerStore {
 
     @action toggleExchangePane() {
         return this.state.isExchangePaneOpened = !this.state.isExchangePaneOpened;
+    }
+
+    @action toggleBookPane() {
+        return this.state.isBookPaneOpened = !this.state.isBookPaneOpened;
+    }
+
+    @action setBooks(results:any[]) {
+        this.state.results = results;
+    }
+    
+    @action setBookPaneVisibility(isBookPaneOpened: boolean) {
+        return this.state.isBookPaneOpened = isBookPaneOpened;
     }
 
     @action setExchangePaneVisibility(isExchangePaneOpened: boolean) {
